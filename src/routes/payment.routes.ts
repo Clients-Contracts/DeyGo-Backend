@@ -1,6 +1,14 @@
-import { Router } from 'express';
+import express from 'express';
+import { 
+  initiatePayment, 
+  verifyPayment, 
+  getPaymentHistory 
+} from '../controllers/payment.controller';
 
-const router = Router();
+const router = express.Router();
 
+router.post('/initiate', initiatePayment);
+router.post('/verify', verifyPayment);
+router.get('/history/:userId', getPaymentHistory);
 
 export default router;

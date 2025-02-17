@@ -1,17 +1,18 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema, Document, ObjectId } from "mongoose";
 
-export interface IUser extends Document {
+export interface I_Passenger extends Document {
   _id: string;
   name: string;
   email: string;
   phone: string;
   password: string;
-  role: string;
   provider: string;
   providerId: string;
+  trips: ObjectId[];
+  receipts: ObjectId[]
 }
 
-const userSchema: Schema = new Schema(
+const passengerSchema: Schema = new Schema(
   {
     provider: { type: String, required: true },
     providerId: { type: String, required: true, unique: true },
@@ -19,9 +20,10 @@ const userSchema: Schema = new Schema(
     email: { type: String, required: true, unique: true },
     phone: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, default: "passenger" },
+    trips: [{ type: Schema.ObjectId, ref: "Trip" }],
+    receipts: [{ type: Schema.ObjectId, ref: "Receipt" }]
   },
   { timestamps: true }
 );
 
-export default mongoose.model<IUser>("User", userSchema);
+export default mongoose.model<I_Passenger>("Passenger", passengerSchema);
