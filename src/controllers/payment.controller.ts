@@ -23,11 +23,11 @@ export const verifyPayment = async (req: Request, res: Response) => {
   }
 };
 
-//Get payment history for a user
+//Get payment history for a passenger
 export const getPaymentHistory = async (req: Request, res: Response) => {
   try {
-    const userId = req.params.userId;
-    const paymentHistory = await PaymentService.getPaymentHistory(userId);
+    const passengerId = req.params.passengerId;
+    const paymentHistory = await PaymentService.getPaymentHistory(passengerId);
     res.status(200).json(paymentHistory);
   } catch (error) {
     res.status(500).json({ message: "Failed to get payment history", error });

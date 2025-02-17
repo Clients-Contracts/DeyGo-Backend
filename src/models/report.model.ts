@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 export interface I_Report extends Document {
-    user: mongoose.Types.ObjectId;
+    passenger: mongoose.Types.ObjectId;
     driver: mongoose.Types.ObjectId;
     trip: mongoose.Types.ObjectId;
     reason: string;
@@ -11,7 +11,7 @@ export interface I_Report extends Document {
   }
   
   const ReportSchema: Schema = new Schema({
-    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    passenger: { type: Schema.Types.ObjectId, ref: 'passenger', required: true },
     driver: { type: Schema.Types.ObjectId, ref: 'Driver', required: true },
     trip: { type: Schema.Types.ObjectId, ref: 'Trip', required: true },
     reason: { type: String, required: true },

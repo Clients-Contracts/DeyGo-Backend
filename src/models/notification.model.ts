@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface I_Notification extends Document {
-  user: mongoose.Types.ObjectId;
+  passenger: mongoose.Types.ObjectId;
   title: string;
   message: string;
   isRead: boolean;
@@ -9,7 +9,7 @@ export interface I_Notification extends Document {
 }
 
 const NotificationSchema: Schema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  passenger: { type: Schema.Types.ObjectId, ref: 'passenger', required: true },
   title: { type: String, required: true },
   message: { type: String, required: true },
   isRead: { type: Boolean, default: false },

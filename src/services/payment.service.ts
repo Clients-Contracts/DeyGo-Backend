@@ -14,8 +14,8 @@ export const verifyPayment = async (paymentId: string) => {
   return await Payment.findById(paymentId);
 };
 
-// Get payment history for a user
-export const getPaymentHistory = async (userId: string) => {
-  return await Payment.find({ userId });
+// Get payment history for a passenger
+export const getPaymentHistory = async (passengerId: string) => {
+  return await Payment.find({ passengerId });
 };
 

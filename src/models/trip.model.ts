@@ -1,13 +1,12 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-export interface I_TripUser {
-  user: mongoose.Types.ObjectId;
-  fare: number;
+export interface I_TripPassenger {
+  passenger: mongoose.Types.ObjectId;
   status: 'booked' | 'boarded' | 'completed' | 'cancelled';
 }
 
 export interface I_Trip extends Document {
-  users: I_TripUser[];
+  passengers: I_TripPassenger[];
   driver: mongoose.Types.ObjectId;
   vehicle: mongoose.Types.ObjectId;
   startLocation: mongoose.Types.ObjectId;
@@ -20,9 +19,9 @@ export interface I_Trip extends Document {
 }
 
 const TripSchema: Schema = new Schema({
-  users: [
+  passengers: [
     {
-      user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+      passenger: { type: Schema.Types.ObjectId, ref: 'passenger', required: true },
       fare: { type: Number, required: true },
       status: { 
         type: String, 

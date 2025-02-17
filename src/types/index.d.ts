@@ -1,15 +1,15 @@
 export interface INotification {
-  userId: string;
+  passengerId: string;
   title: string;
   message: string;
   isRead?: boolean;
   createdAt?: Date;
 }
 
-export interface ITripUser {
-  userId: string;
-  name: string;
-  email: string;
+export interface ITrippassenger {
+  passengerId: string;
+  fare: number;
+  status: 'booked' | 'boarded' | 'completed' | 'cancelled';
 }
 
 export interface IPassenger {
@@ -23,10 +23,19 @@ export interface IPassenger {
 export interface IVehicle {
   
 }
-
+export interface IDriver {
+  name: string;
+  phoneNumber: string;
+  email: string;
+  password: string;
+  status: 'active' | 'inactive' | 'suspended';
+  vehicle: string; // Reference to Vehicle ID
+  rating: number;
+  tripsCompleted: number;
+}
 export interface IPayment {
   _id?: string;
-  user: string; // Reference to user
+  passenger: string; // Reference to passenger
   trip: string; // Reference to trip
   amount: number;
   method: "card" | "cash" | "mobile_money";
@@ -38,10 +47,10 @@ export interface IPayment {
 export interface ITrip {
   driverId: string;
   vehicleId: string;
-  users: ITripUser[]; // Array of Passenger IDs
+  passengers: ITrippassenger[]; // Array of Passenger IDs
   startLocation: string;
   endLocation: string;
-  status: string;
+  status: 'requested' | 'ongoing' | 'completed' | 'cancelled';
   fare: number;
   startedAt?: Date;
   endedAt?: Date;

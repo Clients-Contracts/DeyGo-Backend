@@ -1,18 +1,18 @@
 import express from 'express';
 import { 
-  registerPassenger, 
-  loginPassenger, 
-  getPassengerProfile, 
-  updatePassengerProfile,
+  register, 
+  login, 
+  getProfile, 
+  updateProfile,
   getBookingHistory
 } from '../controllers/passenger.controller';
 
 const router = express.Router();
 
-router.post('/register', registerPassenger);
-router.post('/login', loginPassenger);
-router.get('/profile/:id', getPassengerProfile);
-router.put('/profile/:id', updatePassengerProfile);
+router.post('/register', register);
+router.post('/login', login);
+router.get('/profile/:id', getProfile);
+router.put('/profile/:id', updateProfile);
 router.get('/bookings/:id', getBookingHistory);
 
 export default router;

@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
 import * as NotificationService from '../services/notification.service';
-import { INotification } from '../types/notification.type';
+import { INotification } from 'types';
 
-// Get all notifications for a user
+// Get all notifications for a passenger
 export const getNotifications = async (req: Request, res: Response) => {
   try {
-    const notifications = await NotificationService.getNotifications(req.params.userId);
+    const notifications = await NotificationService.getNotifications(req.params.passengerId);
     res.status(200).json(notifications);
   } catch (error) {
     res.status(500).json({ message: 'Failed to get notifications', error });

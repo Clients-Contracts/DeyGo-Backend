@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 export interface I_Payment extends Document {
-    user: mongoose.Types.ObjectId;
+    passenger: mongoose.Types.ObjectId;
     trip: mongoose.Types.ObjectId;
     amount: number;
     method: 'card' | 'mobile_money' | 'cash';
@@ -10,7 +10,7 @@ export interface I_Payment extends Document {
   }
   
   const PaymentSchema: Schema = new Schema({
-    user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    passenger: { type: Schema.Types.ObjectId, ref: 'passenger', required: true },
     trip: { type: Schema.Types.ObjectId, ref: 'Trip', required: true },
     amount: { type: Number, required: true },
     method: { type: String, enum: ['card', 'mobile_money', 'cash'], required: true },

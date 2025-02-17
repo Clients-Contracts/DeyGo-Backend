@@ -1,8 +1,9 @@
-import Notification, { INotification } from '../models/notification.model';
+import { INotification } from 'types';
+import Notification from '../models/notification.model';
 
-// Get all notifications for a user
-export const getNotifications = async (userId: string) => {
-  return await Notification.find({ userId });
+// Get all notifications for a passenger
+export const getNotifications = async (passengerId: string) => {
+  return await Notification.find({ passengerId });
 };
 
 // Mark a notification as read

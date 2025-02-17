@@ -8,21 +8,21 @@ import {
   Profile as FacebookProfile,
 } from "passport-facebook";
 import { Strategy as AppleStrategy, Profile, VerifyCallback } from 'passport-apple';
-import User, { IUser } from "../models/passenger.model";
+import Passenger, { I_Passenger } from "../models/passenger.model";
 import { OAuthProfile } from "../types/oauthProfile";
 import dotenv from "dotenv";
 
 dotenv.config();
-// Serialize User
-passport.serializeUser((user, done) => {
-  done(null, (user as IUser)._id);
+// Serialize passenger
+passport.serializeUser((passenger, done) => {
+  done(null, (passenger as I_Passenger)._id);
 });
 
-// Deserialize User
+// Deserialize passenger
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findById(id).lean();
-    done(null, user as IUser);
+    const passenger = await Passenger.findById(id).lean();
+    done(null, passenger as I_Passenger);
   } catch (err) {
     done(err, null);
   }
@@ -39,16 +39,16 @@ passport.use(
     },
     async (req, _accessToken, _refreshToken, profile, done) => {
       try {
-        let user = await User.findOne({ providerId: profile.id });
-        if (!user) {
-          user = await User.create({
+        let passenger = await Passenger.findOne({ providerId: profile.id });
+        if (!passenger) {
+          passenger = await Passenger.create({
             provider: "google",
             providerId: profile.id,
-            name: profile.displayName || "Unknown User",
+            name: profile.displayName || "Unknown passenger",
             email: profile.emails?.[0]?.value || "no-email@example.com",
           });
         }
-        done(null, user);
+        done(null, passenger);
       } catch (error) {
         done(error as Error, undefined);
       }
@@ -72,16 +72,16 @@ passport.use(
       done
     ) => {
       try {
-        let user = await User.findOne({ providerId: profile.id });
-        if (!user) {
-          user = await User.create({
+        let passenger = await Passenger.findOne({ providerId: profile.id });
+        if (!passenger) {
+          passenger = await Passenger.create({
             provider: "facebook",
             providerId: profile.id,
-            name: profile.displayName || "Unknown User",
+            name: profile.displayName || "Unknown passenger",
             email: profile.emails?.[0]?.value || "no-email@example.com",
           });
         }
-        done(null, user);
+        done(null, passenger);
       } catch (error) {
         done(error as Error, null);
       }
@@ -103,16 +103,16 @@ passport.use(new AppleStrategy({
     const typedProfile = profile as unknown as OAuthProfile;
 
     try {
-      let user = await User.findOne({ providerId: typedProfile.id });
-      if (!user) {
-        user = await User.create({
+      let passenger = await Passenger.findOne({ providerId: typedProfile.id });
+      if (!passenger) {
+        passenger = await Passenger.create({
           provider: 'apple',
           providerId: typedProfile.id,
           name: `${typedProfile.name?.firstName || ''} ${typedProfile.name?.lastName || ''}`,
           email: typedProfile.emails?.[0]?.value || ''
         });
       }
-      done(null, user);  // Correct usage with VerifyCallback
+      done(null, passenger);  // Correct usage with VerifyCallback
     } catch (error) {
       done(error as Error, undefined);  // Use undefined instead of null
     }

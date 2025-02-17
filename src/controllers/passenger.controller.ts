@@ -44,3 +44,15 @@ export const updateProfile = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Profile update failed', error });
   }
 };
+
+
+//Get passenger booking history
+export const getBookingHistory = async (req: Request, res: Response) => {
+  try {
+    const passengerId = req.params.id
+    const bookingHistory = await PassengerService.getBookingHistory(passengerId);
+    res.status(200).json(bookingHistory)
+  } catch (error) {
+    res.status(500).json({ message: 'Couldn\'t fetch booking history', error });
+  }
+}

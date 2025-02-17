@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.post('/initiate', initiatePayment);
 router.post('/verify', verifyPayment);
-router.get('/history/:userId', getPaymentHistory);
+router.get('/history/:passengerId', getPaymentHistory);
 
 export default router;

@@ -16,7 +16,7 @@ export const createTrip = async (req: Request, res: Response) => {
 // Join an existing trip
 export const joinTrip = async (req: Request, res: Response) => {
   try {
-    const trip = await TripService.joinTrip(req.params.tripId, req.body.userId);
+    const trip = await TripService.joinTrip(req.params.tripId, req.body.passengerId);
     res.status(200).json(trip);
   } catch (error) {
     res.status(500).json({ message: 'Failed to join trip', error });
@@ -33,11 +33,11 @@ export const trackTrip = async (req: Request, res: Response) => {
   }
 };
 
-// Get trip history for a user
+// Get trip history for a passenger
 export const getTripHistory = async (req: Request, res: Response) => {
     try {
-      const userId = req.params.userId;
-      const tripHistory = await TripService.getTripHistory(userId);
+      const passengerId = req.params.passengerId;
+      const tripHistory = await TripService.getTripHistory(passengerId);
       res.status(200).json(tripHistory);
     } catch (error) {
       res.status(500).json({ message: 'Failed to get trip history', error });
@@ -48,9 +48,9 @@ export const getTripHistory = async (req: Request, res: Response) => {
   export const cancelTrip = async (req: Request, res: Response) => {
     try {
       const tripId = req.params.tripId;
-      const userId = req.body.userId;
-      const canceledTrip = await TripService.cancelTrip(tripId, userId);
-      res.status(200).json({ message: 'Trip canceled', canceledTrip });
+      const passengerId = req.body.passengerId;
+      const cancelledTrip = await TripService.cancelTrip(tripId, passengerId);
+      res.status(200).json({ message: 'Trip cancelled', cancelledTrip });
     } catch (error) {
       res.status(500).json({ message: 'Failed to cancel trip', error });
     }
