@@ -1,4 +1,3 @@
-import jwt from "jsonwebtoken";
 import { IDriver, IVehicle } from "../types";
 import Driver from "../models/driver.model";
 import Vehicle from "../models/vehicle.model";
@@ -6,21 +5,15 @@ import Trip from "../models/trip.model";
 import Payment from "../models/payment.model";
 import Notification from "../models/notification.model";
 import * as bcrypt from "bcrypt"
+import { generateToken } from "utils/helpers";
 
-// Helper Function: Generate JWT Token
-const generateToken = (driverId: string) => {
-  return jwt.sign({ id: driverId }, process.env.JWT_SECRET as string, {
-    expiresIn: "7d",
-  });
-};
 
 // Register a new driver
 export const registerDriver = async (data: IDriver) => {
   const existingDriver = await Driver.findOne({ email: data.email });
   if (existingDriver) throw new Error("Driver already exists");
 
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(data.password, salt);
+  const hashedPassword = await bcrypt.hash(data.password, 10);
   data.password = hashedPassword;
 
   const driver = new Driver(data);

@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import jwt from "jsonwebtoken";
 
 // Generate a unique ID
 export const generateUniqueId = (): string => {
@@ -26,3 +27,10 @@ export class AppError extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 }
+
+// Helper Function: Generate JWT Token
+export const generateToken = (id: string) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET as string, {
+    expiresIn: "7d",
+  });
+};

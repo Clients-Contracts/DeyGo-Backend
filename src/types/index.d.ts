@@ -59,9 +59,10 @@ export interface ITrip {
 
 
 export interface IAdmin {
+  email: string;
+  name: string;
+  id: string;
+  password: string;
+  role: "admin"|"superadmin";
 
-}
-
-export interface IAdmin {
-  
 }
