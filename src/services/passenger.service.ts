@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import Passenger from '../models/passenger.model';
-import bcrypt from 'bcryptjs/types';
+import * as bcrypt from "bcrypt"
 import { IPassenger } from 'types';
 
 // Register a new passenger

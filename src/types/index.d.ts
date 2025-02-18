@@ -13,6 +13,7 @@ export interface ITrippassenger {
 }
 
 export interface IPassenger {
+  id?: string;
   name: string;
   email: string;
   password: string;

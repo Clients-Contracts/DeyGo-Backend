@@ -1,15 +1,30 @@
-import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { Secret, JwtPayload } from "jsonwebtoken";
+import { Request, Response, NextFunction } from "express";
+import dotenv from "dotenv";
+dotenv.config();
 
-export const authenticate = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) return res.status(401).json({ message: 'Unauthorized' });
+const JWT_SECRET = process.env.JWT_SECRET as string;
 
+export const SECRET_KEY: Secret = JWT_SECRET;
+
+export interface CustomRequest extends Request {
+  token: string | JwtPayload;
+}
+
+export const auth = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || '');
-    req.passenger = decoded;
+    console.log(req.header("Authorization"));
+    const token = req.header("Authorization")?.replace("Bearer ", "");
+    if (!token) {
+      console.log("missing token");
+      throw new Error();
+    }
+    const decoded = jwt.verify(token, SECRET_KEY);
+    (req as CustomRequest).token = decoded;
+
     next();
-  } catch (error) {
-    res.status(401).json({ message: 'Invalid Token' });
+  } catch (err) {
+    res.status(401).send("Please authenticate");
   }
 };
+ 

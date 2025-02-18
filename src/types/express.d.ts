@@ -1,12 +1,17 @@
-import { JwtPayload } from 'jsonwebtoken';
-import { IAdmin, IDriver, IPassenger } from 'types';
+// types/express.d.ts
+import { Request } from 'express';
 
+// Define the structure of the decoded token (assuming it's a JWT)
+interface DecodedToken {
+  id: string;
+  email: string;
+}
+
+// Extend the Request interface to include the 'user' property
 declare global {
   namespace Express {
     interface Request {
-      passenger?: IPassenger | JwtPayload;
-      driver?: IDriver | JwtPayload;
-      admin?: IAdmin | JwtPayload
+      user?: DecodedToken;
     }
   }
 }

@@ -1,6 +1,5 @@
 import Passenger, { I_Passenger } from '../models/passenger.model';
-import bcrypt from 'bcryptjs';
-
+import * as bcrypt from "bcrypt"
 export default class AuthService {
   static async register(data: any): Promise<I_Passenger> {
     const { name, email, phone, password } = data;

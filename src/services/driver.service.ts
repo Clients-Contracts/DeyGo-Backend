@@ -5,7 +5,7 @@ import Vehicle from "../models/vehicle.model";
 import Trip from "../models/trip.model";
 import Payment from "../models/payment.model";
 import Notification from "../models/notification.model";
-import bcrypt from "bcryptjs/types";
+import * as bcrypt from "bcrypt"
 
 // Helper Function: Generate JWT Token
 const generateToken = (driverId: string) => {
