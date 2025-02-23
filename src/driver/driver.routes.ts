@@ -12,7 +12,7 @@ import {
   completeTrip,
   getPaymentHistory,
   getNotifications
-} from '../controllers/driver.controller';
+} from './driver.controller';
 
 const router = express.Router();
 

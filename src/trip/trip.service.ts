@@ -1,5 +1,5 @@
 import { ITrip } from 'types';
-import Trip from '../models/trip.model';
+import Trip from './trip.model';
 
 // Create a new trip
 export const createTrip = async (tripData: ITrip) => {

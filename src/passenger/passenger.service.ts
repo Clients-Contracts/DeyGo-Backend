@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import Passenger from '../models/passenger.model';
+import Passenger from './passenger.model';
 import * as bcrypt from "bcrypt"
 import { IPassenger } from 'types';
 

@@ -1,4 +1,4 @@
-import Passenger, { I_Passenger } from '../models/passenger.model';
+import Passenger, { I_Passenger } from '../passenger/passenger.model';
 import * as bcrypt from "bcrypt"
 export default class AuthService {
   static async register(data: any): Promise<I_Passenger> {

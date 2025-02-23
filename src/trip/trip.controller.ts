@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import * as TripService from '../services/trip.service';
+import * as TripService from './trip.service';
 import { ITrip } from 'types';
 
 // Create a new trip

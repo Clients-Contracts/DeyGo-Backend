@@ -1,5 +1,5 @@
 import { IPayment } from 'types';
-import Payment from '../models/payment.model';
+import Payment from './payment.model';
 
 // Initiate a payment
 export const initiatePayment = async (paymentData: IPayment) => {

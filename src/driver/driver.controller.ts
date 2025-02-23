@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import * as driverService from '../services/driver.service';
+import * as driverService from './driver.service';
 
 // Register a new driver
 export const registerDriver = async (req: Request, res: Response) => {

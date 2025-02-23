@@ -8,7 +8,7 @@ import {
   Profile as FacebookProfile,
 } from "passport-facebook";
 import { Strategy as AppleStrategy, Profile, VerifyCallback } from 'passport-apple';
-import Passenger, { I_Passenger } from "../models/passenger.model";
+import Passenger, { I_Passenger } from "../passenger/passenger.model";
 import { OAuthProfile } from "../types/oauthProfile";
 import dotenv from "dotenv";
 

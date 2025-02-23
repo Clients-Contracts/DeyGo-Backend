@@ -5,7 +5,7 @@ import {
   getProfile, 
   updateProfile,
   getBookingHistory
-} from '../controllers/passenger.controller';
+} from './passenger.controller';
 
 const router = express.Router();
 

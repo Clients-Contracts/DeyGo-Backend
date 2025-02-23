@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as PaymentService from "../services/payment.service";
+import * as PaymentService from "./payment.service";
 import { IPayment } from "types";
 
 // Initiate a payment

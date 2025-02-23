@@ -1,5 +1,5 @@
 import express from "express";
-import {} from "../controllers/driver.controller";
+import {} from "../driver/driver.controller";
 import {
   approveDriver,
   fetchAdminData,
@@ -9,7 +9,7 @@ import {
   registerAdmin,
   rejectDriver,
   updateAdminData,
-} from "controllers/admin.controller";
+} from "./admin.controller";
 
 const router = express.Router();
 

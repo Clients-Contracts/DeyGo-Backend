@@ -1,5 +1,5 @@
 import { INotification } from 'types';
-import Notification from '../models/notification.model';
+import Notification from './notification.model';
 
 // Get all notifications for a passenger
 export const getNotifications = async (passengerId: string) => {

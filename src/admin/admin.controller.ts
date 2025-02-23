@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import * as adminService from "../services/admin.service";
-import * as notificationService from "../services/notification.service";
+import * as adminService from "../admin/admin.service";
+import * as notificationService from "../notiication/notification.service";
 
 // Authentication Management
 export const registerAdmin = async (req: Request, res: Response) => {

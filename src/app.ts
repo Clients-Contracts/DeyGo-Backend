@@ -9,9 +9,9 @@ import './config/passport';
 dotenv.config();
 
 // Import Routes
-import authRoutes from './routes/auth.routes';
-import passengerRoutes from './routes/passenger.routes';
-import tripRoutes from './routes/trip.routes';
+import authRoutes from './auth/auth.routes';
+import passengerRoutes from './passenger/passenger.routes';
+import tripRoutes from './trip/trip.routes';
 
 const app: Application = express();
 

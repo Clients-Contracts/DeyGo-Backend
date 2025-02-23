@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import * as PassengerService from '../services/passenger.service';
+import * as PassengerService from './passenger.service';
 import { IPassenger } from 'types';
 
 // Register a new passenger

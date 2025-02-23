@@ -4,7 +4,7 @@ import {
   markAsRead, 
   createNotification, 
   deleteNotification 
-} from '../controllers/notification.controller';
+} from './notification.controller';
 
 const router = express.Router();
 

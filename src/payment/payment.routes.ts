@@ -3,7 +3,7 @@ import {
   initiatePayment, 
   verifyPayment, 
   getPaymentHistory 
-} from '../controllers/payment.controller';
+} from './payment.controller';
 
 const router = express.Router();
 

@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 import * as bcrypt from "bcrypt";
 import { IAdmin, IDriver } from "types";
-import driverModel from "models/driver.model";
-import adminModel from "models/admin.model";
+import driverModel from "driver/driver.model";
+import adminModel from "./admin.model";
 import { generateToken } from "utils/helpers";
 
 export const register = async (data: IAdmin) => {

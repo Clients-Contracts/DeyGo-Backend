@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import * as NotificationService from '../services/notification.service';
+import * as NotificationService from './notification.service';
 import { INotification } from 'types';
 
 // Get all notifications for a passenger

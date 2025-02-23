@@ -5,7 +5,7 @@ import {
   trackTrip, 
   getTripHistory, 
   cancelTrip 
-} from '../controllers/trip.controller';
+} from './trip.controller';
 
 const router = express.Router();
 

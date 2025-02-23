@@ -1,9 +1,9 @@
 import { IDriver, IVehicle } from "../types";
-import Driver from "../models/driver.model";
-import Vehicle from "../models/vehicle.model";
-import Trip from "../models/trip.model";
-import Payment from "../models/payment.model";
-import Notification from "../models/notification.model";
+import Driver from "./driver.model";
+import Vehicle from "../vehicle/vehicle.model";
+import Trip from "../trip/trip.model";
+import Payment from "../payment/payment.model";
+import Notification from "../notiication/notification.model";
 import * as bcrypt from "bcrypt"
 import { generateToken } from "utils/helpers";
 
