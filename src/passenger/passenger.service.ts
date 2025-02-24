@@ -25,6 +25,17 @@ export const loginPassenger = async (email: string, password: string) => {
   return token;
 };
 
+// Login a passenger
+export const resetPassengerPassword = async (email: string, password: string) => {
+  const passenger = await Passenger.findOne({ email });
+  if (!passenger) throw new Error('Passenger not found');
+
+  const hashPassword = await bcrypt.hash(password, 10);
+  passenger.password = hashPassword
+  await passenger.save();
+  return "Password reset successful";
+};
+
 // Get passenger profile
 export const getPassengerProfile = async (id: string) => {
   return await Passenger.findById(id);
@@ -37,5 +48,6 @@ export const updatePassengerProfile = async (id: string, updateData: Partial<IPa
 
 // Get booking history
 export const getBookingHistory = async (passengerId: string) => {
-  return await Passenger.findById(passengerId).populate('trips');
+  const passenger = await Passenger.findById(passengerId).populate('trips');
+  return passenger?.trips || [];
 };

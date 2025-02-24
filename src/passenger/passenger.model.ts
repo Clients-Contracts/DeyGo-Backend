@@ -6,16 +6,16 @@ export interface I_Passenger extends Document {
   email: string;
   phone: string;
   password: string;
-  provider: string;
-  providerId: string;
+  provider?: string;
+  providerId?: string;
   trips: ObjectId[];
   receipts: ObjectId[]
 }
 
 const passengerSchema: Schema = new Schema(
   {
-    provider: { type: String, required: true },
-    providerId: { type: String, required: true, unique: true },
+    provider: { type: String },
+    providerId: { type: String },
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     phone: { type: String, required: true, unique: true },

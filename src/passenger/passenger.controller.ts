@@ -22,8 +22,18 @@ export const login = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(401).json({ message: 'Login failed', error });
   }
-};
+}; 
 
+// Login a passenger
+export const resetPassword = async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+    await PassengerService.resetPassengerPassword(email, password);
+    res.status(200).json("Password reset successful");
+  } catch (error) {
+    res.status(401).json({ message: 'Login failed', error });
+  }
+}; 
 // Get passenger profile
 export const getProfile = async (req: Request, res: Response) => {
   try {

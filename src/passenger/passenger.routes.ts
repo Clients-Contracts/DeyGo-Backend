@@ -4,15 +4,18 @@ import {
   login, 
   getProfile, 
   updateProfile,
-  getBookingHistory
+  getBookingHistory,
+  resetPassword
 } from './passenger.controller';
+import { auth } from '../auth/auth.middleware';
 
 const router = express.Router();
 
 router.post('/register', register);
 router.post('/login', login);
+router.patch('/reset-password', resetPassword);
 router.get('/profile/:id', getProfile);
-router.put('/profile/:id', updateProfile);
+router.put('/profile/:id', auth, updateProfile);
 router.get('/bookings/:id', getBookingHistory);
 
 export default router;
