@@ -20,5 +20,6 @@ export interface I_Report extends Document {
     createdAt: { type: Date, default: Date.now }
   });
   
-  export default mongoose.model<I_Report>('Report', ReportSchema);
+  const Report = mongoose.model<I_Report>('Report', ReportSchema);
+  export default Report 
   

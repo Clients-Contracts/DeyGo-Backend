@@ -20,5 +20,6 @@ export interface I_Vehicle extends Document {
     status: { type: String, enum: ['active', 'inactive', 'maintenance'], default: 'inactive' }
   });
   
-  export default mongoose.model<I_Vehicle>('Vehicle', VehicleSchema);
+  const Vehicle = mongoose.model<I_Vehicle>('Vehicle', VehicleSchema);
+  export default Vehicle 
   

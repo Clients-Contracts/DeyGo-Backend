@@ -5,7 +5,7 @@ import Trip from "../trip/trip.model";
 import Payment from "../payment/payment.model";
 import Notification from "../notiication/notification.model";
 import * as bcrypt from "bcrypt"
-import { generateToken } from "utils/helpers";
+import { generateToken } from "../utils/helpers";
 
 
 // Register a new driver

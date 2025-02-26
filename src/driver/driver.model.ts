@@ -21,6 +21,6 @@ const DriverSchema: Schema = new Schema({
   rating: { type: Number, default: 0 },
   tripsCompleted: { type: Number, default: 0 }
 });
-
-export default mongoose.model<I_Driver>('Driver', DriverSchema);
+const Driver = mongoose.model<I_Driver>('Driver', DriverSchema);
+export default Driver
 

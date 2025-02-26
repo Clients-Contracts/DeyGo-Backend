@@ -45,4 +45,5 @@ const TripSchema: Schema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-export default mongoose.model<I_Trip>('Trip', TripSchema);
+const Trip = mongoose.model<I_Trip>('Trip', TripSchema);
+export default Trip

@@ -12,6 +12,10 @@ dotenv.config();
 import authRoutes from './auth/auth.routes';
 import passengerRoutes from './passenger/passenger.routes';
 import tripRoutes from './trip/trip.routes';
+import adminRoutes from './admin/admin.routes';
+import driverRoutes from './driver/driver.routes';
+import notificationRoutes from './notiication/notification.routes'
+import paymentRoutes from './payment/payment.routes'
 
 const app: Application = express();
 
@@ -22,6 +26,10 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/passengers', passengerRoutes);
 app.use('/api/trips', tripRoutes);
+app.use('/api/admin', adminRoutes)
+app.use('/api/driver', driverRoutes)
+app.use('/api/notification', notificationRoutes)
+app.use('/api/payment', paymentRoutes)
 
 
 app.use(session({

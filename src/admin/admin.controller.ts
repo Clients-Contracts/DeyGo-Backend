@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as adminService from "../admin/admin.service";
+import * as Admin from "../admin/admin.service";
 import * as notificationService from "../notiication/notification.service";
 
 // Authentication Management
@@ -9,6 +9,7 @@ export const registerAdmin = async (req: Request, res: Response) => {
     res.status(500).json({ message: "", error });
   }
 };
+
 export const loginAdmin = async (req: Request, res: Response) => {
   try {
   } catch (error) {
@@ -19,7 +20,7 @@ export const loginAdmin = async (req: Request, res: Response) => {
 // Drivers' management
 export const fetchDrivers = async (req: Request, res: Response) => {
   try {
-    const drivers = await adminService.allDrivers();
+    const drivers = await Admin.allDrivers();
     res.status(200).json(drivers);
   } catch (error) {
     res.status(500).json({ message: "", error });

@@ -1,16 +1,16 @@
 import jwt from "jsonwebtoken";
 import * as bcrypt from "bcrypt";
 import { IAdmin, IDriver } from "types";
-import driverModel from "driver/driver.model";
 import adminModel from "./admin.model";
-import { generateToken } from "utils/helpers";
+import { generateToken } from "../utils/helpers";
+import Driver from "../driver/driver.model";
 
 export const register = async (data: IAdmin) => {
   const existingAccount = await adminModel.findOne({ email: data.email });
   if (existingAccount) throw new Error(`Already registered`);
 
   const hashedPassword = await bcrypt.hash(data.password, 10);
-  const newAdmin = await driverModel.create({
+  const newAdmin = await Driver.create({
     ...data,
     password: hashedPassword,
   });
@@ -30,7 +30,7 @@ export const login = async (data: { email: string; password: string }) => {
 };
 
 export const allDrivers = async () => {
-    const drivers = await driverModel.find();
+    const drivers = await Driver.find();
     return drivers;
 }
 

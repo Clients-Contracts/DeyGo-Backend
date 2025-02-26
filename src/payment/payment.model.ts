@@ -18,5 +18,6 @@ export interface I_Payment extends Document {
     transactionDate: { type: Date, default: Date.now }
   });
   
-  export default mongoose.model<I_Payment>('Payment', PaymentSchema);
+  const Payment = mongoose.model<I_Payment>('Payment', PaymentSchema);
+  export default Payment 
   

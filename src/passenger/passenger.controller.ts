@@ -17,7 +17,10 @@ export const register = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
+  console.log("afa", email, password)
+
     const token = await PassengerService.loginPassenger(email, password);
+    console.log(token)
     res.status(200).json({ token });
   } catch (error) {
     res.status(401).json({ message: 'Login failed', error });
@@ -64,5 +67,25 @@ export const getBookingHistory = async (req: Request, res: Response) => {
     res.status(200).json(bookingHistory)
   } catch (error) {
     res.status(500).json({ message: 'Couldn\'t fetch booking history', error });
+  }
+}
+
+//Get all passengers
+export const fetchAllPassengers = async (req: Request, res:Response) => {
+  try {
+    const passengers = await PassengerService.getAllPassengers();
+    res.status(200).json(passengers);
+  } catch (error) {
+    res.status(500).json({ message: 'Could not fetch all passengers', error})
+  }
+}
+
+//Delete a passenger
+export const deletePassenger = async (req: Request, res: Response) => {
+  try {
+    await PassengerService.deletePassenger(req.params.id);
+    res.status(200).json({ message: 'Passenger deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to delete passenger', error });
   }
 }

@@ -16,5 +16,6 @@ export interface I_Location extends Document {
     }
   });
   
-  export default mongoose.model<I_Location>('Location', LocationSchema);
+  const Location = mongoose.model<I_Location>('Location', LocationSchema);
+  export default Location
   
