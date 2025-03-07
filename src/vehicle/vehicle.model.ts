@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-export interface I_Vehicle extends Document {
+export interface IVehicle extends Document {
     driver: mongoose.Types.ObjectId;
     make: string;
     model: string;
@@ -20,6 +20,6 @@ export interface I_Vehicle extends Document {
     status: { type: String, enum: ['active', 'inactive', 'maintenance'], default: 'inactive' }
   });
   
-  const Vehicle = mongoose.model<I_Vehicle>('Vehicle', VehicleSchema);
+  const Vehicle = mongoose.model<IVehicle>('Vehicle', VehicleSchema);
   export default Vehicle 
   

@@ -1,8 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 
-export interface I_Payment extends Document {
-    passenger: mongoose.Types.ObjectId;
-    trip: mongoose.Types.ObjectId;
+export interface IPayment extends Document {
+    passenger: mongoose.Types.ObjectId | string;
+    trip: mongoose.Types.ObjectId | string;
     amount: number;
     method: 'card' | 'mobile_money' | 'cash';
     status: 'pending' | 'completed' | 'failed';
@@ -18,6 +18,6 @@ export interface I_Payment extends Document {
     transactionDate: { type: Date, default: Date.now }
   });
   
-  const Payment = mongoose.model<I_Payment>('Payment', PaymentSchema);
+  const Payment = mongoose.model<IPayment>('Payment', PaymentSchema);
   export default Payment 
   

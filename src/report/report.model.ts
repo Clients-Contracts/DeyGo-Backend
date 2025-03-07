@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-export interface I_Report extends Document {
+export interface IReport extends Document {
     passenger: mongoose.Types.ObjectId;
     driver: mongoose.Types.ObjectId;
     trip: mongoose.Types.ObjectId;
@@ -20,6 +20,6 @@ export interface I_Report extends Document {
     createdAt: { type: Date, default: Date.now }
   });
   
-  const Report = mongoose.model<I_Report>('Report', ReportSchema);
+  const Report = mongoose.model<IReport>('Report', ReportSchema);
   export default Report 
   

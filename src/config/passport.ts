@@ -8,21 +8,21 @@ import {
   Profile as FacebookProfile,
 } from "passport-facebook";
 import { Strategy as AppleStrategy, Profile, VerifyCallback } from 'passport-apple';
-import Passenger, { I_Passenger } from "../passenger/passenger.model";
+import Passenger, { IPassenger } from "../passenger/passenger.model";
 import { OAuthProfile } from "../types/oauthProfile";
 import dotenv from "dotenv";
 
 dotenv.config();
 // Serialize passenger
 passport.serializeUser((passenger, done) => {
-  done(null, (passenger as I_Passenger)._id);
+  done(null, (passenger as IPassenger)._id);
 });
 
 // Deserialize passenger
 passport.deserializeUser(async (id, done) => {
   try {
     const passenger = await Passenger.findById(id).lean();
-    done(null, passenger as I_Passenger);
+    done(null, passenger as IPassenger);
   } catch (err) {
     done(err, null);
   }

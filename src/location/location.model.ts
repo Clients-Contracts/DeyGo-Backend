@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-export interface I_Location extends Document {
+export interface ILocation extends Document {
     name: string;
     coordinates: {
       lat: number;
@@ -16,6 +16,6 @@ export interface I_Location extends Document {
     }
   });
   
-  const Location = mongoose.model<I_Location>('Location', LocationSchema);
+  const Location = mongoose.model<ILocation>('Location', LocationSchema);
   export default Location
   

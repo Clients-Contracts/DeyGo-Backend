@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-export interface I_Notification extends Document {
+export interface INotification extends Document {
   passenger: mongoose.Types.ObjectId;
   title: string;
   message: string;
@@ -16,6 +16,6 @@ const NotificationSchema: Schema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-const Notification = mongoose.model<I_Notification>('Notification', NotificationSchema);
+const Notification = mongoose.model<INotification>('Notification', NotificationSchema);
 
 export default Notification
