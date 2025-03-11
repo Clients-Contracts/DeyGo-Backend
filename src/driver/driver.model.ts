@@ -3,7 +3,7 @@ import User from "../user/user.model";
 
 export interface IDriver extends Document {
   status: 'active' | 'inactive' | 'suspended';
-  vehicle: mongoose.Types.ObjectId;
+  vehicle: mongoose.Types.ObjectId | string;
   rating: number;
   tripsCompleted: number;
 }

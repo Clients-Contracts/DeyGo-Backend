@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 export interface IVehicle extends Document {
-    driver: mongoose.Types.ObjectId;
+    driver: mongoose.Types.ObjectId | string;
     make: string;
     model: string;
     year: number;
