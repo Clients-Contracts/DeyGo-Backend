@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import * as PassengerService from './passenger.service';
+import * as PassengerService from './passenger.services';
 
 
 

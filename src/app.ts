@@ -28,8 +28,8 @@ app.use("/api/users", userRoutes)
 app.use("/api/passengers", passengerRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/admin", adminRoutes);
-app.use("/api/driver", driverRoutes);
-app.use("/api/notification", notificationRoutes);
+app.use("/api/drivers", driverRoutes);
+app.use("/api/notifications", notificationRoutes);
 app.use("/api/payment", paymentRoutes);
 
 app.use(

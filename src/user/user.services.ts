@@ -19,40 +19,12 @@ export const getUserBookingHistory = async (userId: string) => {
   return user?.trips || [];
 };
 
-// Login a user
-export const userLogin = async (email: string, password: string) => {
-  console.log(email, password);
-  const user = await User.findOne({ email });
-  console.log(1);
-
-  if (!user) throw new Error("user not found");
-  console.log(2);
-  console.log(user);
-
-  const isMatch = await bcrypt.compare(password, user.password);
-  console.log(isMatch);
-
-  if (!isMatch) throw new Error("Invalid credentials");
-  console.log(4);
-
-  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET || "secret", {
-    expiresIn: "1d",
-  });
-  console.log(token);
-
-  return token;
-};
-
-// Register a new passenger
-export const userRegisteration = async (userData: IUser) => {
-  const hashedPassword = await bcrypt.hash(userData.password, 10);
-  const newUser = new User({ ...userData, password: hashedPassword });
-  return await newUser.save();
-};
 
 // Get passenger profile
 export const getUserProfile = async (id: string) => {
-  return await User.findById(id);
+  const user = await User.findById(id);
+  if(!user) throw new Error("User not found")
+  return user
 };
 
 // Update passenger profile
@@ -60,7 +32,11 @@ export const updateUserProfile = async (
   id: string,
   updateData: Partial<IUser>
 ) => {
-  return await User.findByIdAndUpdate(id, updateData, { new: true });
+  const updatedUser = await User.findByIdAndUpdate(id, updateData, { new: true });
+  if (!updatedUser) {
+    throw new Error("User not found")
+  }
+  return updatedUser
 };
 
 export const getTripsMade = async (id: string) => {
