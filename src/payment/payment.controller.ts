@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import * as PaymentService from "./payment.service";
-import { IPayment } from "types";
+import { IPayment } from "./payment.model";
 
 // Initiate a payment
 export const initiatePayment = async (req: Request, res: Response) => {

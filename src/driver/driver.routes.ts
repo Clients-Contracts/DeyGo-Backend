@@ -1,9 +1,5 @@
 import express from 'express';
 import { 
-  registerDriver, 
-  loginDriver, 
-  getDriverProfile, 
-  updateDriverProfile,
   getVehicleDetails,
   updateVehicleDetails,
   getCurrentTrip,
@@ -16,13 +12,6 @@ import {
 
 const router = express.Router();
 
-// Authentication Routes
-router.post('/register', registerDriver);
-router.post('/login', loginDriver);
-
-// Profile Management Routes
-router.get('/profile/:id', getDriverProfile);
-router.put('/profile/:id', updateDriverProfile);
 
 // Vehicle Management Routes
 router.get('/vehicle/:id', getVehicleDetails);

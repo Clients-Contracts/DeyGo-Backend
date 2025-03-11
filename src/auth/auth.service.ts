@@ -1,4 +1,4 @@
-import User, { IUser } from 'user/user.model';
+import User, { IUser } from '../user/user.model';
 import * as bcrypt from "bcrypt"
 export default class AuthService {
   static async register(data: any): Promise<IUser> {

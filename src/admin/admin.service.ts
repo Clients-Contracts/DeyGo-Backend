@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import * as bcrypt from "bcrypt";
-import { IAdmin, IDriver } from "types";
-import adminModel from "./admin.model";
+import adminModel, { IAdmin } from "./admin.model";
 import { generateToken } from "../utils/helpers";
 import Driver from "../driver/driver.model";
 

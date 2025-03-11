@@ -1,47 +1,6 @@
 import { Request, Response } from 'express';
 import * as driverService from './driver.service';
 
-// Register a new driver
-export const registerDriver = async (req: Request, res: Response) => {
-  try {
-    const driver = await driverService.registerDriver(req.body);
-    res.status(201).json(driver);
-  } catch (error) {
-    res.status(500).json({ message: '', error });
-  }
-};
-
-// Login driver
-export const loginDriver = async (req: Request, res: Response) => {
-  try {
-    const token = await driverService.loginDriver(req.body);
-    res.status(200).json({ token });
-  } catch (error) {
-    res.status(500).json({ message: '', error });
-  }
-};
-
-// Get driver profile by ID
-export const getDriverProfile = async (req: Request, res: Response) => {
-  try {
-    const profile = await driverService.getDriverProfile(req.params.id);
-    res.status(200).json(profile);
-  } catch (error) {
-        res.status(500).json({ message: '', error });
-  }
-};
-
-// Update driver profile
-export const updateDriverProfile = async (req: Request, res: Response) => {
-  try {
-    const updatedProfile = await driverService.updateDriverProfile(req.params.id, req.body);
-    res.status(200).json(updatedProfile);
-  } catch (error) {
-        res.status(500).json({ message: '', error });
-
-  }
-};
-
 // Get vehicle details by driver ID
 export const getVehicleDetails = async (req: Request, res: Response) => {
   try {

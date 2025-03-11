@@ -1,6 +1,5 @@
-import { IDriver, IVehicle } from "../types";
 import Driver from "./driver.model";
-import Vehicle from "../vehicle/vehicle.model";
+import Vehicle, { IVehicle } from "../vehicle/vehicle.model";
 import Trip from "../trip/trip.model";
 import Payment from "../payment/payment.model";
 import Notification from "../notiication/notification.model";
@@ -8,54 +7,6 @@ import * as bcrypt from "bcrypt"
 import { generateToken } from "../utils/helpers";
 
 
-// Register a new driver
-export const registerDriver = async (data: IDriver) => {
-  const existingDriver = await Driver.findOne({ email: data.email });
-  if (existingDriver) throw new Error("Driver already exists");
-
-  const hashedPassword = await bcrypt.hash(data.password, 10);
-  data.password = hashedPassword;
-
-  const driver = new Driver(data);
-  await driver.save();
-
-  const token = generateToken(driver._id as string);
-  return { driver, token };
-};
-
-// Login driver
-export const loginDriver = async (data: {
-  email: string;
-  password: string;
-}) => {
-  const driver = await Driver.findOne({ email: data.email });
-  if (!driver) throw new Error("Driver not found");
-
-  const isMatch = await bcrypt.compare(data.password, driver.password);
-  if (!isMatch) throw new Error("Invalid credentials");
-
-  const token = generateToken(driver._id as string);
-  return token;
-};
-
-// Get driver profile by ID
-export const getDriverProfile = async (driverId: string) => {
-  const driver = await Driver.findById(driverId).select("-password");
-  if (!driver) throw new Error("Driver not found");
-  return driver;
-};
-
-// Update driver profile
-export const updateDriverProfile = async (
-  driverId: string,
-  data: Partial<IDriver>
-) => {
-  const driver = await Driver.findByIdAndUpdate(driverId, data, {
-    new: true,
-  }).select("-password");
-  if (!driver) throw new Error("Driver not found");
-  return driver;
-};
 
 // Get payment history for driver
 export const getDriverPaymentHistory = async (driverId: string) => {

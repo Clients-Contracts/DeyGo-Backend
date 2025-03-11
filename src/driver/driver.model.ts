@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import User from "user/user.model";
+import User from "../user/user.model";
 
 export interface IDriver extends Document {
   status: 'active' | 'inactive' | 'suspended';

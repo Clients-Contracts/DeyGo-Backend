@@ -16,7 +16,7 @@ import adminRoutes from "./admin/admin.routes";
 import driverRoutes from "./driver/driver.routes";
 import notificationRoutes from "./notiication/notification.routes";
 import paymentRoutes from "./payment/payment.routes";
-
+import userRoutes from "./user/user.routes"
 const app: Application = express();
 
 app.use(cors());
@@ -24,6 +24,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes)
 app.use("/api/passengers", passengerRoutes);
 app.use("/api/trips", tripRoutes);
 app.use("/api/admin", adminRoutes);
