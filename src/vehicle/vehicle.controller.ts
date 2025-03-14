@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import Vehicle from "./vehicle.model";
 import * as vehicleServices from "./vehicle.services";
 
 export async function fetchVehicle(req: Request, res: Response) {

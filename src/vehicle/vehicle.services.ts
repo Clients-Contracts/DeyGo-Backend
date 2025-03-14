@@ -1,4 +1,4 @@
-import Driver from "driver/driver.model";
+import Driver from "../driver/driver.model";
 import Vehicle, { IVehicle } from "./vehicle.model";
 
 export const getVehicleById = async (vehicleId: string) => {
