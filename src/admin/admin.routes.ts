@@ -5,6 +5,7 @@ import {
   fetchAdminData,
   fetchDrivers,
   getDriver,
+  googleVerification,
   loginAdmin,
   registerAdmin,
   rejectDriver,
@@ -16,6 +17,11 @@ const router = express.Router();
 // Authentication Routes
 router.post("/register", registerAdmin);
 router.post("/login", loginAdmin);
+
+
+// Google authentication verification
+router.post('/google-verify', googleVerification);
+
 
 // Profile Management Routes
 router.get("/profile/:id", fetchAdminData);
